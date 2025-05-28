@@ -116,3 +116,17 @@ scrape_configs:
       - targets: ["localhost:8080"]
     metrics_path: '/prometheus'
 
+=================================================================
+nodeexporter - grafana dashboard - 1860	  
+	  
+=====================================================================================================
+now to monitor extra functionality  at cluster level we need to setup kube-state-metrics server
+
+
+git clone https://github.com/kubernetes/kube-state-metrics.git
+
+kubectl apply -f kube-state-metrics/examples/standard
+
+kubectl get all -n kube-system
+
+kubectl expose service kube-state-metrics --type=NodePort --name kube-state-metrics-ext -n kube-system
